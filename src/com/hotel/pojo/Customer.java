@@ -1,11 +1,14 @@
 package com.hotel.pojo;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +25,9 @@ public class Customer {
 	
 	@Embedded
 	private Address address;
+	
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="customer")
+	private MembershipCard card;
 
 	public int getCustomerNo() {
 		return customerNo;
@@ -46,6 +52,13 @@ public class Customer {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	
+
+	public MembershipCard getCard() {
+		return card;
+	}
+
+	public void setCard(MembershipCard card) {
+		this.card = card;
+	}
 	
 }
