@@ -1,5 +1,7 @@
 package com.hotel.pojo;
 
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -8,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -28,6 +32,10 @@ public class Customer {
 	
 	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="customer")
 	private MembershipCard card;
+	
+	@OneToMany(fetch=FetchType.LAZY)
+	@JoinColumn(name="CUSTOMERNO")
+	private Set<PizzaOrder> pizzaOrders;
 
 	public int getCustomerNo() {
 		return customerNo;
@@ -59,6 +67,14 @@ public class Customer {
 
 	public void setCard(MembershipCard card) {
 		this.card = card;
+	}
+
+	public Set<PizzaOrder> getPizzaOrders() {
+		return pizzaOrders;
+	}
+
+	public void setPizzaOrders(Set<PizzaOrder> pizzaOrders) {
+		this.pizzaOrders = pizzaOrders;
 	}
 	
 }
