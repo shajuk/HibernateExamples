@@ -55,18 +55,22 @@ public class Main {
 //		pizzaDAO.createPizzas(pizzas);
 		
 		OrderDAO orderDAO=new OrderDAO();
-		Set<PizzaOrder> orderObjs=new HashSet<PizzaOrder>();
-		PizzaOrder o1=new PizzaOrder();
-		o1.setOrderDate(new Date());
-		orderObjs.add(o1);
+//		Set<PizzaOrder> orderObjs=new HashSet<PizzaOrder>();
+//		PizzaOrder o1=new PizzaOrder();
+//		o1.setOrderDate(new Date());
+//		orderObjs.add(o1);
+//		
+//		PizzaOrder o2=new PizzaOrder();
+//		o2.setOrderDate(new Date());
+//		orderObjs.add(o2);
+//		
+//		orderDAO.createOrder(2, orderObjs);
+//		System.out.println(o1.getOrderId());
+//		System.out.println(o2.getOrderId());
 		
-		PizzaOrder o2=new PizzaOrder();
-		o2.setOrderDate(new Date());
-		orderObjs.add(o2);
+		orderDAO.createOrderDetail(18, 2, 1, 60);
+		//Scenario #2 ends
 		
-		orderDAO.createOrder(2, orderObjs);
-		System.out.println(o1.getOrderId());
-		System.out.println(o2.getOrderId());
 		
 	}
 }
