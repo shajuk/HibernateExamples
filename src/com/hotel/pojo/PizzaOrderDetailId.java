@@ -1,10 +1,12 @@
 package com.hotel.pojo;
 
+import java.io.Serializable;
+
 import javax.persistence.Embeddable;
 import javax.persistence.ManyToOne;
 
 @Embeddable
-public class PizzaOrderDetailId {
+public class PizzaOrderDetailId implements Serializable{
 	
 	@ManyToOne
 	private Pizza pizza;

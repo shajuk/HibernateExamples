@@ -30,7 +30,7 @@ CREATE TABLE PizzaOrder (
 	OrderDate DATETIME NOT NULL,
     TotalAmount INTEGER(25) NOT NULL,
 	Customer_No INTEGER(25) NOT NULL,
-    SalesBoyId INTEGER(25) NOT NULL,
+    SalesBoyId INTEGER(25) ,
     FOREIGN KEY (SalesBoyId) REFERENCES SalesBoys (SalesBoyId),
     FOREIGN KEY (Customer_No) REFERENCES Customer (CustomerNo)
 );

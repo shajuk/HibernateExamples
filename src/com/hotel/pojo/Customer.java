@@ -33,8 +33,7 @@ public class Customer {
 	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="customer")
 	private MembershipCard card;
 	
-	@OneToMany(fetch=FetchType.LAZY)
-	@JoinColumn(name="CUSTOMERNO")
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="customer")
 	private Set<PizzaOrder> pizzaOrders;
 
 	public int getCustomerNo() {

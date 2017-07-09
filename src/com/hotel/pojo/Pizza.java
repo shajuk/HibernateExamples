@@ -24,7 +24,7 @@ public class Pizza {
 	private int pizzaId;
 	
 	@Column(name="PIZZANAME")
-	private int pizzaName;
+	private String pizzaName;
 	
 	@OneToMany(cascade=CascadeType.ALL , fetch=FetchType.LAZY , mappedBy="pizzaOrderDetailId.pizza" )
 	private Set<PizzaOrderDetail> pizzaOrderDetails=new HashSet<PizzaOrderDetail>();
@@ -37,11 +37,11 @@ public class Pizza {
 		this.pizzaId = pizzaId;
 	}
 
-	public int getPizzaName() {
+	public String getPizzaName() {
 		return pizzaName;
 	}
 
-	public void setPizzaName(int pizzaName) {
+	public void setPizzaName(String pizzaName) {
 		this.pizzaName = pizzaName;
 	}
 

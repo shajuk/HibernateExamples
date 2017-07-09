@@ -16,5 +16,9 @@
 		<!-- Mapping files -->
 		<mapping class="com.hotel.pojo.Customer"/>
 		<mapping class="com.hotel.pojo.MembershipCard"/>
+		<mapping class="com.hotel.pojo.Pizza"/>
+		<mapping class="com.hotel.pojo.PizzaOrder"/>
+		<mapping class="com.hotel.pojo.PizzaOrderDetail"/>
+		<mapping class="com.hotel.pojo.SalesBoys"/>
 	</session-factory>
 </hibernate-configuration>

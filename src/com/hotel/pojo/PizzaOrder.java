@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -29,12 +30,6 @@ public class PizzaOrder {
 	
 	@Column(name="TOTALAMOUNT")
 	private int totalAmount;
-	
-	@Column(name="CUSTOMER_NO")
-	private int customerNo;
-	
-	@Column(name="SALESBOYID")
-	private int salesBoyId;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="CUSTOMER_NO")
@@ -71,21 +66,28 @@ public class PizzaOrder {
 		this.totalAmount = totalAmount;
 	}
 
-	public int getCustomerNo() {
-		return customerNo;
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public void setCustomerNo(int customerNo) {
-		this.customerNo = customerNo;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
-	public int getSalesBoyId() {
-		return salesBoyId;
+	public SalesBoys getSalesBoys() {
+		return salesBoys;
 	}
 
-	public void setSalesBoyId(int salesBoyId) {
-		this.salesBoyId = salesBoyId;
+	public void setSalesBoys(SalesBoys salesBoys) {
+		this.salesBoys = salesBoys;
 	}
-	
+
+	public Set<PizzaOrderDetail> getPizzaOrderDetails() {
+		return pizzaOrderDetails;
+	}
+
+	public void setPizzaOrderDetails(Set<PizzaOrderDetail> pizzaOrderDetails) {
+		this.pizzaOrderDetails = pizzaOrderDetails;
+	}
 	
 }
