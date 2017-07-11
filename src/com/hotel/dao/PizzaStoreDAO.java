@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.hotel.pojo.Customer;
+import com.hotel.pojo.SalesBoys;
 import com.hotel.util.HibernateUtil;
 
 public class PizzaStoreDAO {
@@ -22,10 +23,12 @@ public class PizzaStoreDAO {
 					+ "from PizzaOrder pizzaOrder group by pizzaOrder.salesBoys.salesBoyId");
 			@SuppressWarnings("unchecked")
 			Iterator<Object[]> it=q.iterate();
+			System.out.println("SalesBoy ID\tSalesBy Name\tTotal Delivery Made");
 			while(it.hasNext()){
+				System.out.println("-------------------------------------------------------------------------");
 				Object[] row=(Object[]) it.next();
-				System.out.println("SalesBoy Id: "+row[0]);
-				System.out.println("Total Delivery Made: "+row[1]);
+				SalesBoys s=(SalesBoys)session.load(SalesBoys.class, new Integer(row[0].toString()));
+				System.out.println(s.getSalesBoyId()+"\t\t"+s.getSalesBoyName()+"\t\t"+row[1]);
 			}
 			t.commit();
 		}catch(HibernateException e){
