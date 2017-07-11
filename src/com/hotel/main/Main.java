@@ -2,7 +2,10 @@ package com.hotel.main;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
+import org.hibernate.Hibernate;
 
 import com.hotel.dao.CustomerDAO;
 import com.hotel.dao.OrderDAO;
@@ -140,6 +143,10 @@ public class Main {
 		//Scenario #4
 		PizzaStoreDAO pizzaStoreDAO=new PizzaStoreDAO();
 		pizzaStoreDAO.findTotalDeliveryMadeByEachSalesBoy();
+		List<Customer> customers=pizzaStoreDAO.findCustomerWhoPlacedLargestNoOfOrders();
+		for(Customer c:customers){
+			System.out.println(c.getCustomerNo()+"\t"+c.getCustomerName());
+		}
 		//Scenario #4 ends
 		
 		
