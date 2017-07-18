@@ -13,9 +13,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 
 @Entity
 @Table(name="PIZZA")
+@Cache(usage=CacheConcurrencyStrategy.READ_ONLY , region="pizzaStoreCache")
 public class Pizza {
 	
 	@Id

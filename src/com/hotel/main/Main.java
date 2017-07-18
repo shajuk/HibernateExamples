@@ -14,6 +14,7 @@ import com.hotel.pojo.Customer;
 import com.hotel.pojo.MembershipCard;
 import com.hotel.pojo.Pizza;
 import com.hotel.pojo.PizzaOrder;
+import com.hotel.util.HibernateUtil;
 
 public class Main {
 	public static void main(String[] args) {
@@ -139,7 +140,9 @@ public class Main {
 		
 		//Scenario #4
 		PizzaStoreDAO pizzaStoreDAO=new PizzaStoreDAO();
-		pizzaStoreDAO.findTotalDeliveryMadeByEachSalesBoy();
+		//pizzaStoreDAO.findTotalDeliveryMadeByEachSalesBoy();
+		pizzaStoreDAO.getAvailablePizzas();
+		//HibernateUtil.getSessionFactory().close();
 		//Scenario #4 ends
 		
 		

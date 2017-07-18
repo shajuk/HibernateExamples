@@ -20,7 +20,6 @@ public class OrderDAO {
 			session=HibernateUtil.getSessionFactory().openSession();
 			Transaction t=session.beginTransaction();
 			Customer c=(Customer)session.load(Customer.class, customerID);
-			
 			for(PizzaOrder p:orderObjs){
 				p.setCustomer(c);
 				session.save(p);
@@ -42,14 +41,12 @@ public class OrderDAO {
 			Transaction t=session.beginTransaction();
 			PizzaOrder o=(PizzaOrder)session.load(PizzaOrder.class, orderId);
 			Pizza p=(Pizza)session.load(Pizza.class, pizzaId);
-			
 			PizzaOrderDetail pod=new PizzaOrderDetail();
 			pod.setPizza(p);
 			pod.setPizzaOrder(o);
 			pod.setPrice(price);
 			pod.setQuantity(quantity);
 			session.save(pod);
-			
 			int totalAmnt=o.getTotalAmount();
 			o.setTotalAmount(totalAmnt + (pod.getPrice() * pod.getQuantity()));
 			session.saveOrUpdate(o);

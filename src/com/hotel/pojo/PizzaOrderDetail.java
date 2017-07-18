@@ -24,6 +24,22 @@ public class PizzaOrderDetail {
 	
 	@Column(name="PRICE")
 	private int price;
+	
+	public Pizza getPizza() {
+		return getPizzaOrderDetailId().getPizza();
+	}
+
+	public void setPizza(Pizza pizza) {
+		getPizzaOrderDetailId().setPizza(pizza);
+	}
+
+	public PizzaOrder getPizzaOrder() {
+		return getPizzaOrderDetailId().getPizzaOrder();
+	}
+
+	public void setPizzaOrder(PizzaOrder pizzaOrder) {
+		getPizzaOrderDetailId().setPizzaOrder(pizzaOrder);
+	}
 
 	public PizzaOrderDetailId getPizzaOrderDetailId() {
 		return pizzaOrderDetailId;
@@ -49,19 +65,5 @@ public class PizzaOrderDetail {
 		this.price = price;
 	}
 	
-	public Pizza getPizza() {
-		return getPizzaOrderDetailId().getPizza();
-	}
-
-	public void setPizza(Pizza pizza) {
-		getPizzaOrderDetailId().setPizza(pizza);
-	}
-
-	public PizzaOrder getPizzaOrder() {
-		return getPizzaOrderDetailId().getPizzaOrder();
-	}
-
-	public void setPizzaOrder(PizzaOrder pizzaOrder) {
-		getPizzaOrderDetailId().setPizzaOrder(pizzaOrder);
-	}
+	
 }
