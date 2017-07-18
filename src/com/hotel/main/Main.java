@@ -141,6 +141,10 @@ public class Main {
 		//Scenario #4
 		PizzaStoreDAO pizzaStoreDAO=new PizzaStoreDAO();
 		//pizzaStoreDAO.findTotalDeliveryMadeByEachSalesBoy();
+		List<Customer> customers=pizzaStoreDAO.findCustomerWhoPlacedLargestNoOfOrders();
+		for(Customer c:customers){
+			System.out.println(c.getCustomerNo()+"\t"+c.getCustomerName());
+		}
 		pizzaStoreDAO.getAvailablePizzas();
 		//HibernateUtil.getSessionFactory().close();
 		//Scenario #4 ends

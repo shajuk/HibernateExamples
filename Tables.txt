@@ -30,7 +30,7 @@ CREATE TABLE PizzaOrder (
 	OrderDate DATETIME NOT NULL,
     TotalAmount INTEGER(25) NOT NULL,
 	Customer_No INTEGER(25) NOT NULL,
-    SalesBoyId INTEGER(25) ,
+    SalesBoyId INTEGER(25) NOT NULL,
     FOREIGN KEY (SalesBoyId) REFERENCES SalesBoys (SalesBoyId),
     FOREIGN KEY (Customer_No) REFERENCES Customer (CustomerNo)
 );
@@ -85,3 +85,88 @@ VALUES ('Jino','Eklm','478569','Jino@gmail.com');
 INSERT INTO "PUBLIC"."SALESBOYS"
 ( "SALESBOYNAME", "ADDRESS", "CONTACTNO", "EMAILID" )
 VALUES ('Linto','Eklm','78596','Jino@gmail.com' );
+
+
+
+////////////////////////////////
+
+DROP DATABASE IF EXISTS dth;
+
+
+
+CREATE DATABASE dth;
+
+
+
+USE dth;
+
+create table package(
+	packageid INT NOT NULL AUTO_INCREMENT,
+	packagename VARCHAR(20),
+	PRIMARY KEY(packageid)
+);
+
+create table channel(
+	channelno INT NOT NULL AUTO_INCREMENT,
+	channelname VARCHAR(20),
+	package_id INT,
+	PRIMARY KEY(channelno),
+	FOREIGN KEY(package_id) REFERENCES
+	PACKAGE(packageid)
+);
+
+create table customer(
+	customerid INT NOT NULL AUTO_INCREMENT,
+	customername VARCHAR(20),
+	doorno VARCHAR(10),
+	street VARCHAR(20),
+	city VARCHAR(20),
+	state VARCHAR(20),
+	pincode VARCHAR(10),
+	contactno VARCHAR(15),
+	emailid VARCHAR(20),
+	PRIMARY KEY(customerid)
+);
+
+create table subscription(
+	package_id INT NOT NULL,
+	customer_id INT NOT NULL,
+	PRIMARY KEY(package_id,customer_id),
+	FOREIGN KEY(package_id) REFERENCES
+	PACKAGE(packageid),
+	FOREIGN KEY(customer_id) REFERENCES
+	CUSTOMER(customerid)
+);
+
+create table additional_channel(
+	channel_no INT NOT NULL,
+	customer_no INT NOT NULL,
+	from_date DATE,
+	till_date DATE,
+	PRIMARY KEY(channel_no,customer_no),
+	FOREIGN KEY(channel_no) REFERENCES
+	CHANNEL(channelno),
+	FOREIGN KEY(customer_no) REFERENCES
+	CUSTOMER(customerid)
+);
+
+
+create table payment(
+  paymentid INT NOT NULL AUTO_INCREMENT,
+  amountpaid DECIMAL(10,2),
+  paiddate DATE,
+  customerno INT,
+  PRIMARY KEY(paymentid),
+  FOREIGN KEY(customerno) REFERENCES
+  CUSTOMER(customerid)
+
+ );
+
+create table creditcardpayment(
+ creditcardpaymentid INT NOT NULL,
+ creditcardno VARCHAR(20),
+ expirymonth VARCHAR(15),
+ expiryyear  INT,
+ PRIMARY KEY(creditcardpaymentid)
+);
+
